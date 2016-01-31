@@ -32,23 +32,46 @@
 //   };
 // };
 
-// Refactored Way
+// Long way #2
 var leapYear = function(year) {
   var leap = false;
-  if(year % 400 === 0 || year % 4 === 0){
-    console.log("Yes, this is a leap year!");
-    leap = true;
-    return leap
-  }else if(year % 4 !== 0 || year % 100 === 0){
+  if(year % 4 === 0){
+    if(year % 100 !== 0){
+      console.log("Yes, this is a leap year!");
+      leap = true;
+      return leap
+    }else if(year % 100 === 0){
+      if(year % 400 === 0){
+        console.log("Yes, this is a leap year!");
+        leap = true;
+        return leap
+      }else{
+        console.log("No, this is not a leap year")
+        return leap
+      };
+    }
+  }else if(year % 4 !== 0){
     console.log("No, this is not a leap year")
     return leap
   };
 };
 
 
+
+//   if(year % 400 === 0 || year % 4 === 0){
+//     console.log("Yes, this is a leap year!");
+//     leap = true;
+//     return leap
+//   }else if(year % 4 !== 0 || year % 100 === 0){
+//     console.log("No, this is not a leap year")
+//     return leap
+//   };
+// };
+
+
 //console.log(leapYear(1999))
 //console.log(leapYear(2000))
-console.log(leapYear(1900))
+//console.log(leapYear(1900))
 //console.log(leapYear(1200))
 //console.log(leapYear(1493))
 //console.log(leapYear(1776))
