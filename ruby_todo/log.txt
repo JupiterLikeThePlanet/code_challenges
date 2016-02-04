@@ -1,3 +1,5 @@
 commit 1 "Create task files, add initial methods to classes (still in works)"
 
 commit 2 "Move completed methods from Item Class to Todo class"
+
+commit 3 "Edit add_item, add delete_item, change parameters to index"

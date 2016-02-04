@@ -16,8 +16,9 @@ class TodoList
 
   def print_list
     p "List Name: " + @name
-    @list.each_with_index do |item,index|
-
+    @list.each_with_index do |item, index|
+      pp "(#{item.index})" + "#{item}"
+    end
   end
 
   def add_item(item)
