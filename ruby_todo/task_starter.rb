@@ -22,13 +22,16 @@ class TodoList
 
   def add_item(item)
     @list << Item.new(item)
+    print_list
     return @list
   end
 
-  def delete_item(item)
+  def delete_item(index)
+    @list.delete_at(index)
+    return @list
   end
 
-  def edit_item(item)
+  def edit_item(index)
   end
 
   def completed?(index)
@@ -47,7 +50,6 @@ end
 
 
 
-
 class Item
 
   attr_reader :item
@@ -58,7 +60,5 @@ class Item
     @item =  + " [ ]"
     @status = status
   end
-
-
 
 end
