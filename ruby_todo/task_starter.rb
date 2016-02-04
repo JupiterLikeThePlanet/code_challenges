@@ -1,4 +1,5 @@
 require 'pp'
+
 class TodoList
 
   attr_accessor :list
@@ -23,11 +24,16 @@ class TodoList
   end
 
   def add_item(item)
-    # @list << Item.new(item)
-    item = Item.new(item)
-    @list.push(item)
-    print_list
-    return @list
+    p @list
+    p @todo
+    p item
+    # item = Item.new(item)
+    # p item
+    #<< Item.new(item)
+    # item = Item.new(item)
+    # @list.push(item)
+    #print_list
+    #return @list
   end
 
   def delete_item(index)
@@ -67,6 +73,8 @@ end
 
 class Command_Line
 
+  attr_accessor :todo
+
   def initialize
     @todo = TodoList.new
   end
@@ -87,4 +95,6 @@ class Command_Line
 end
 
 user = Command_Line.new
+test = TodoList.new
+p user.todo.add_item('apple')
 user.enter_commands(ARGV[0], ARGV[1])

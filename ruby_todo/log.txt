@@ -5,3 +5,5 @@ commit 2 "Move completed methods from Item Class to Todo class"
 commit 3 "Edit add_item, add delete_item, change parameters to index"
 
 commit 4 "Complete print_list method"
+
+commit 5 "Add Command_Line class, debug print method & completed?"
