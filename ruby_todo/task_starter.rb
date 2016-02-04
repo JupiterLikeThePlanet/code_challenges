@@ -11,16 +11,36 @@ class TodoList
   end
 
   def list_name
-    p @name
+    p "List Name: " @name
   end
 
   def print_list
-    p @name
-    pp @list
+    p "List Name: " + @name
+    @list.each_with_index do |item,index|
+
   end
 
   def add_item(item)
     @list << Item.new(item)
+    return @list
+  end
+
+  def delete_item(item)
+  end
+
+  def edit_item(item)
+  end
+
+  def completed?(index)
+    if (@item.status = 'incomplete')
+      return false
+    else
+      return true
+  end
+
+  def completed(index)
+    @item = @item.index + " [X]"
+    @status = 'completed'
   end
 
 end
@@ -31,21 +51,14 @@ end
 class Item
 
   attr_reader :item
+  attr_accessor :status
 
 
-  def initialize(item)
-    @item = "[ ] " + item
-    @status = false
+  def initialize(item, status="incomplete")
+    @item =  + " [ ]"
+    @status = status
   end
 
-  def completed?
-    @status
-  end
-
-  def completed(item)
-    item = "[X] " + item
-    return status = true
-  end
 
 
 end
