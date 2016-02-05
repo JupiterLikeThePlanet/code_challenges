@@ -4,7 +4,7 @@ class TodoList
 
   attr_accessor :list
 
-  def intialize(args={})
+  def initialize(args={})
     @list = []
   end
 
@@ -24,12 +24,15 @@ class TodoList
   end
 
   def add_item(item)
-    p @list
-    p @todo
-    p item
-    # item = Item.new(item)
-    # p item
-    #<< Item.new(item)
+
+    #p "List: "+ "#{@list}"
+    # p @todo
+    #p "Item: "+ "#{@item}"
+    p "#{item} has been added to the list"
+
+    #p item
+    @list << Item.new(item)
+    return @list
     # item = Item.new(item)
     # @list.push(item)
     #print_list
@@ -60,11 +63,12 @@ end
 
 class Item
 
-  attr_reader :item
-  attr_accessor :status
+  #attr_reader :item
+  attr_accessor :status, :item
 
   def initialize(item, status="incomplete")
-    @item =  item + " [ ]"
+
+    @item =  "#{item} [ ]"
     @status = status
   end
 
@@ -82,7 +86,7 @@ class Command_Line
   def enter_commands(command = nil, input = nil)
     case command
       when "add"
-        @todo.add_item(input)
+        @thing = @todo.add_item(input)
       when "print"
         @todo.print_list
       when "delete"
@@ -94,7 +98,7 @@ class Command_Line
 
 end
 
+
 user = Command_Line.new
-test = TodoList.new
-p user.todo.add_item('apple')
+#p user.todo.add_item('apple')
 user.enter_commands(ARGV[0], ARGV[1])
