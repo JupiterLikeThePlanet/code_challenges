@@ -5,6 +5,7 @@ class TodoList
   attr_accessor :list, :name
 
   def initialize(args={})
+    #@name = name
     @list = []
   end
 
@@ -20,7 +21,8 @@ class TodoList
   def print_list
     #p "List Name: " + @name
     @list.each_with_index do |item, index|
-      pp ("(#{index})" + "#{item}")
+      # index = index + 1
+      pp ("(#{index}) #{item.item}")
     end
   end
 
@@ -38,16 +40,19 @@ class TodoList
   end
 
   def completed?(index)
-    if (@item.status = 'incomplete')
+    if @list[index].status = "[ ]"
+      p false
       return false
     else
+      p true
       return true
     end
   end
 
   def completed(index)
-    @item = @item.index + " [X]"
-    @status = 'completed'
+    @status = "[X]"
+    puts item = "#{@list[index].item} #{@status}"
+    @list[index] = item
   end
 
 end
@@ -56,12 +61,11 @@ end
 
 class Item
 
-  #attr_reader :item
   attr_accessor :status, :item
 
-  def initialize(item, status="incomplete")
-    @item =  "#{item} [ ]"
+  def initialize(item, status="[ ]")
     @status = status
+    @item = "#{item}"
   end
 
 end
