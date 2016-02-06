@@ -2,14 +2,15 @@ require 'pp'
 
 class TodoList
 
-  attr_accessor :list
+  attr_accessor :list, :name
 
-  def intialize(args={})
+  def initialize(args={})
     @list = []
   end
 
   def name_list(name)
     @name = name
+    return @name
   end
 
   def list_name
@@ -17,23 +18,18 @@ class TodoList
   end
 
   def print_list
-    p "List Name: " + @name
+    #p "List Name: " + @name
     @list.each_with_index do |item, index|
-      pp "(#{item.index})" + "#{item}"
+      pp ("(#{index})" + "#{item}")
     end
   end
 
   def add_item(item)
-    p @list
-    p @todo
-    p item
-    # item = Item.new(item)
-    # p item
-    #<< Item.new(item)
-    # item = Item.new(item)
-    # @list.push(item)
+    p "#{item} has been added to the list"
+    @list << Item.new(item)
     #print_list
-    #return @list
+    return @list
+
   end
 
   def delete_item(index)
@@ -60,11 +56,11 @@ end
 
 class Item
 
-  attr_reader :item
-  attr_accessor :status
+  #attr_reader :item
+  attr_accessor :status, :item
 
   def initialize(item, status="incomplete")
-    @item =  item + " [ ]"
+    @item =  "#{item} [ ]"
     @status = status
   end
 
@@ -81,6 +77,10 @@ class Command_Line
 
   def enter_commands(command = nil, input = nil)
     case command
+      when "name"
+        @todo.name_list(input)
+      when "print_name"
+        @todo.list_name
       when "add"
         @todo.add_item(input)
       when "print"
@@ -94,7 +94,7 @@ class Command_Line
 
 end
 
+
 user = Command_Line.new
-test = TodoList.new
-p user.todo.add_item('apple')
+#p user.todo.add_item('apple')
 user.enter_commands(ARGV[0], ARGV[1])

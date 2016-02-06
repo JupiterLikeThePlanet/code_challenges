@@ -7,3 +7,7 @@ commit 3 "Edit add_item, add delete_item, change parameters to index"
 commit 4 "Complete print_list method"
 
 commit 5 "Add Command_Line class, debug print method & completed?"
+
+commit -6 "Correct spelling of initialize in TodoList Class"
+
+commit -7 "Debug print_list method (in progress)"
