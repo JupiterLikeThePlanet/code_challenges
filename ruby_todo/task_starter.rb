@@ -2,7 +2,7 @@ require 'pp'
 
 class TodoList
 
-  attr_accessor :list
+  attr_accessor :list, :name
 
   def initialize(args={})
     @list = []
@@ -10,6 +10,7 @@ class TodoList
 
   def name_list(name)
     @name = name
+    return @name
   end
 
   def list_name
@@ -17,26 +18,18 @@ class TodoList
   end
 
   def print_list
-    p "List Name: " + @name
+    #p "List Name: " + @name
     @list.each_with_index do |item, index|
-      pp "(#{item.index})" + "#{item}"
+      pp ("(#{index})" + "#{item}")
     end
   end
 
   def add_item(item)
-
-    #p "List: "+ "#{@list}"
-    # p @todo
-    #p "Item: "+ "#{@item}"
     p "#{item} has been added to the list"
-
-    #p item
     @list << Item.new(item)
-    return @list
-    # item = Item.new(item)
-    # @list.push(item)
     #print_list
-    #return @list
+    return @list
+
   end
 
   def delete_item(index)
@@ -67,7 +60,6 @@ class Item
   attr_accessor :status, :item
 
   def initialize(item, status="incomplete")
-
     @item =  "#{item} [ ]"
     @status = status
   end
@@ -85,8 +77,12 @@ class Command_Line
 
   def enter_commands(command = nil, input = nil)
     case command
+      when "name"
+        @todo.name_list(input)
+      when "print_name"
+        @todo.list_name
       when "add"
-        @thing = @todo.add_item(input)
+        @todo.add_item(input)
       when "print"
         @todo.print_list
       when "delete"
