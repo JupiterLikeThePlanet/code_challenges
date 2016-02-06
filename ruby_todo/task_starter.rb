@@ -2,27 +2,18 @@ require 'pp'
 
 class TodoList
 
-  attr_accessor :list, :name
+  attr_accessor :list, :title
 
-  def initialize(args={})
-    #@name = name
+  def initialize(title)
+    @title = title
     @list = []
   end
 
-  def name_list(name)
-    @name = name
-    return @name
-  end
-
-  def list_name
-    p "List Name: " + @name
-  end
-
   def print_list
-    #p "List Name: " + @name
+    p "List Title: #{@title}"
     @list.each_with_index do |item, index|
       # index = index + 1
-      pp ("(#{index}) #{item.item}")
+      pp ("(#{index}) #{item.item} #{item.status}" )
     end
   end
 
@@ -40,7 +31,7 @@ class TodoList
   end
 
   def completed?(index)
-    if @list[index].status = "[ ]"
+    if @list[index].status == "[ ]"
       p false
       return false
     else
@@ -50,9 +41,8 @@ class TodoList
   end
 
   def completed(index)
-    @status = "[X]"
-    puts item = "#{@list[index].item} #{@status}"
-    @list[index] = item
+    @list[index].status = "[X]"
+    puts item = "#{@list[index].item} #{@list[index].status}"
   end
 
 end
@@ -71,34 +61,3 @@ class Item
 end
 
 
-class Command_Line
-
-  attr_accessor :todo
-
-  def initialize
-    @todo = TodoList.new
-  end
-
-  def enter_commands(command = nil, input = nil)
-    case command
-      when "name"
-        @todo.name_list(input)
-      when "print_name"
-        @todo.list_name
-      when "add"
-        @todo.add_item(input)
-      when "print"
-        @todo.print_list
-      when "delete"
-        @todo.delete_item(input.to_i)
-      when "complete"
-        @todo.complete(input.to_i)
-    end
-  end
-
-end
-
-
-user = Command_Line.new
-#p user.todo.add_item('apple')
-user.enter_commands(ARGV[0], ARGV[1])
