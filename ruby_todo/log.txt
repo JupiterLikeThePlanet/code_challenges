@@ -13,3 +13,5 @@ commit -6 "Correct spelling of initialize in TodoList Class"
 commit -7 "Debug print_list method (in progress)"
 
 commit -8 "Debug completed? method"
+
+commit -9 "Complete basic todo functionality"
