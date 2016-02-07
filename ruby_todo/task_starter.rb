@@ -1,4 +1,5 @@
 require 'pp'
+require 'time'
 
 class TodoList
 
@@ -18,8 +19,8 @@ class TodoList
   end
 
   def add_item(item)
-    p "#{item} has been added to the list"
     @list << Item.new(item)
+    p "#{item} has been added to the list"
     #print_list
     return @list
 
@@ -42,8 +43,48 @@ class TodoList
 
   def completed(index)
     @list[index].status = "[X]"
-    puts item = "#{@list[index].item} #{@list[index].status}"
+    puts @item = "#{@list[index].item} #{@list[index].status}"
+    return @item
   end
+
+  def completed_items
+    complete_array = []
+    @list.each do |item|
+      if item.status == "[X]"
+        complete_array << item.item
+        # p "#{item.item} completed"
+      else
+        next
+      end
+
+    end
+    p complete_array
+  end
+
+  # def newest_to_oldest
+  #   #for @list.each do |item, index|
+  #   # @list.sort { |a,b| b <=> a if a.created_at > b.created_at
+  #   #   # if a.created_at > b.created_at
+  #   #   #   b <=> a
+  #   #   # else
+  #   #   #   continue
+  #   #   # end
+  #   #} end
+  # end
+
+  # def sort_by_date(direction="ASC")
+  #   sorted = @list.created_at.sort
+  #   sorted.reverse! if direction == "DESC"
+  #   sorted
+  # end
+
+  def sort_by_date
+    # p thing = Time.new
+    @list.each do |item|
+      puts item.time
+    end
+  end
+
 
 end
 
@@ -53,11 +94,11 @@ class Item
 
   attr_accessor :status, :item
 
+  # def initialize(item, status="[ ]", created_at = Time.new)
   def initialize(item, status="[ ]")
     @status = status
     @item = "#{item}"
   end
 
 end
-
 

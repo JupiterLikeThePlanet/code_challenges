@@ -1,5 +1,6 @@
 require_relative 'task_starter.rb'
 require 'pp'
+require 'date'
 
 # Creates a new todo list
 todo = TodoList.new('Stuff to do')
@@ -19,22 +20,29 @@ todo.delete_item(0)
 todo.print_list
 
 # # Delete the second item
-todo.delete_item(1)
+#todo.delete_item(1)
 
 # # Print the list
-todo.print_list
+# todo.print_list
 
-# Update the completion status of the first item to complete
+# # Update the completion status of the first item to complete
 
 todo.completed?(0)
 todo.completed(0)
 todo.completed?(0)
+todo.completed(2)
 
-# Print the list
-todo.print_list
+# # Print the list
+# todo.print_list
 
-# Update the title of the list
-todo.title = "Things to do"
+# # Update the title of the list
+# todo.title = "Things to do"
 
-# Print the list
-todo.print_list
+# # Print the list
+# todo.print_list
+
+#Order by date
+
+todo.completed_items
+
+#todo.print_list
