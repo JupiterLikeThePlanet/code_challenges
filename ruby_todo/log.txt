@@ -17,3 +17,5 @@ commit -8 "Debug completed? method"
 commit -9 "Complete basic todo functionality"
 
 commit -10 "Add completed_list method"
+
+git commit -11 "Add add_tag and filter_by_tag methods"
