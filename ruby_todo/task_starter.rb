@@ -1,5 +1,4 @@
 require 'pp'
-require 'time'
 
 class TodoList
 
@@ -52,52 +51,45 @@ class TodoList
     @list.each do |item|
       if item.status == "[X]"
         complete_array << item.item
-        # p "#{item.item} completed"
       else
         next
       end
 
     end
-    p complete_array
+    p "Completed items: #{complete_array}"
   end
 
-  # def newest_to_oldest
-  #   #for @list.each do |item, index|
-  #   # @list.sort { |a,b| b <=> a if a.created_at > b.created_at
-  #   #   # if a.created_at > b.created_at
-  #   #   #   b <=> a
-  #   #   # else
-  #   #   #   continue
-  #   #   # end
-  #   #} end
-  # end
 
-  # def sort_by_date(direction="ASC")
-  #   sorted = @list.created_at.sort
-  #   sorted.reverse! if direction == "DESC"
-  #   sorted
-  # end
+  def add_tag(index, tag)
+    item = @list[index]
+    item.tag = tag
+    p "#{item.tag} tag was added to #{item.item}"
+    return item.tag
+  end
 
-  def sort_by_date
-    # p thing = Time.new
+  def filter_by_tag(tag)
+    filtered_array = []
     @list.each do |item|
-      puts item.time
+      if item.tag == tag
+        filtered_array << item.item
+      else
+        next
+      end
     end
+    p "Items with the tag '#{tag}': #{filtered_array}"
   end
-
 
 end
 
 
-
 class Item
 
-  attr_accessor :status, :item
+  attr_accessor :status, :item, :tag
 
-  # def initialize(item, status="[ ]", created_at = Time.new)
-  def initialize(item, status="[ ]")
+  def initialize(item, status="[ ]", tag=" ")
     @status = status
     @item = "#{item}"
+    @tag = tag
   end
 
 end

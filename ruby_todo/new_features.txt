@@ -1,1 +1,8 @@
-Added a function that returns
+completed_list
+  prints list of just the completed items
+
+add_tag
+  adds a tag keyword to item
+
+filter_by_tag
+  allows us to filter items by their tag

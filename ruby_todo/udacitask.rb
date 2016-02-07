@@ -41,8 +41,13 @@ todo.completed(2)
 # # Print the list
 # todo.print_list
 
-#Order by date
+#Show completed items
 
 todo.completed_items
+
+# Add a tag
+todo.add_tag(1, "chore")
+
+todo.filter_by_tag('chore')
 
 #todo.print_list
